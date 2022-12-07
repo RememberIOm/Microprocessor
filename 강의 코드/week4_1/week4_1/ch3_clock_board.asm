@@ -1,0 +1,34 @@
+.INCLUDE"M128DEF.INC"
+.ORG 0
+	LDI R16,HIGH(RAMEND)	;load SPH
+	OUT SPH,R16
+	LDI R16,LOW(RAMEND)	;load SPL
+	OUT SPL,R16
+	LDI R16,0xFF
+    OUT  DDRB,R16
+
+BACK:
+	LDI R16,0x55	;load R16 with 0x55
+	OUT PORTB,R16	;send 55H to port B
+	RCALL DELAY	;time delay
+	LDI R16,0xAA	;load R16 with 0xAA
+	OUT PORTB,R16	;send 0xAA to port B
+	RCALL DELAY	;time delay
+	RJMP BACK		;keep doing this indefinitely
+
+				
+DELAY: 	
+	LDI	R20,64
+L1:	LDI	R21,200
+L2:	LDI	R22,250 ;   
+L3:	
+	NOP
+	NOP
+	DEC	R22
+	BRNE	L3
+	DEC	R21
+	BRNE	L2
+	DEC	R20
+	BRNE	L1
+	RET
+	      

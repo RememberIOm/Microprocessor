@@ -1,0 +1,25 @@
+.INCLUDE "M128DEF.INC"
+
+LDI R22,0x44 ; data0
+STS 0x100,R22
+LDI R22,0x22 ; data1
+STS 0x101,R22
+LDI R22,0x9A ; checksum
+STS 0x102,R22
+
+LDI XL,0x0 ; init X
+LDI XH,0x1 ; to 0x100
+LDI R20,0 ; sum=0
+LDI R21,3 ; i=3
+
+
+LOOP:
+LD		R23, X+
+ADD		R20, R23
+DEC		R21
+BRNE	LOOP
+
+
+TST R20
+; do something here
+STOP: RJMP STOP

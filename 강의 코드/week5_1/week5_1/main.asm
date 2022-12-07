@@ -1,0 +1,17 @@
+;
+; week5_1.asm
+;
+; Created: 2021-03-30 오전 9:36:42
+; Author : RBIOM
+;
+
+LDI  R20, 0b10111000
+LDI  R21, 0
+LDI  R22, 8
+LOOP:
+ROR  R20
+BRCS WAIT
+INC  R21
+CP   R21, R22
+BRLT LOOP
+WAIT: RJMP WAIT
