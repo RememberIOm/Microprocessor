@@ -1,6 +1,8 @@
 **/.vs/
 **/Debug/
+**/Release/
 
 *.atsln
 *.asmproj
+*.cproj
 *.xml
