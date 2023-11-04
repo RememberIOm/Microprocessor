@@ -1,0 +1,6 @@
+**/.vs/
+**/Debug/
+
+*.atsln
+*.asmproj
+*.xml
